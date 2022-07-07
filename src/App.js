@@ -1,4 +1,6 @@
 import React from "react";
+import Tomato from "./Tomato";
+import Button from "./Button";
 
 export default function App() {
   const[tomato, setTomato] = React.useState(0)
@@ -10,16 +12,20 @@ export default function App() {
   
   return (
     <div className="App">
-      <h1 className="heading">Tomato Counter</h1>
-      {tomato > 0 ? <h2 className="tomato">{tomatoArray}</h2>:<h2 className="tomato">{tomato}</h2>}
-      <button className="button" onClick={() => {tomato > 0 && setTomato(tomato - 1)}}>
-        -
-      </button>
-      
-      <button className="button" onClick={() => setTomato(tomato + 1)}>
-        +
-      </button>
-        
+      <Tomato 
+        title={'tomato counter'}
+        counter={tomato}
+        array={tomatoArray}
+      /> 
+      <Button 
+        onClick={() => setTomato(tomato - 1)} 
+        buttonType={'-'}
+      />
+      <Button 
+        onClick={() => setTomato(tomato + 1)} 
+        buttonType={'+'} 
+      />
+      {console.log(tomatoArray)}
     </div>
   );
 }
