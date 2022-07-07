@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
+export default function App() {
+  const[tomato, setTomato] = React.useState(0)
+  //🍅
+  const tomatoArray = []
+  for(let i = 0; i < tomato; i++) {
+    tomatoArray.push('🍅')
+  }
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className="heading">Tomato Counter</h1>
+      {tomato > 0 ? <h2 className="tomato">{tomatoArray}</h2>:<h2 className="tomato">{tomato}</h2>}
+      <button className="button" onClick={() => {tomato > 0 && setTomato(tomato - 1)}}>
+        -
+      </button>
+      
+      <button className="button" onClick={() => setTomato(tomato + 1)}>
+        +
+      </button>
+        
     </div>
   );
 }
 
-export default App;
+
