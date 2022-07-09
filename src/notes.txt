@@ -1,0 +1,18 @@
+app and flow
+
+index
+    app
+        week series of functions to hold state 
+        counter hodls state
+
+        return -
+            tomato
+            button
+
+
+Where do I put week?
+    week will determine a selected state
+    maybe it should be in app
+        is because I don't want to deal with nested state
+    maybe it should be its own component?
+    

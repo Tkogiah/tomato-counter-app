@@ -1,5 +1,7 @@
 import "./App.css";
 import { useState } from "react";
+import Tomato from "./Tomato";
+import Button from "./Button";
 
 /*
   1. Select day, Turn it bold (default "M")
@@ -8,25 +10,51 @@ import { useState } from "react";
      which day is selected 
 */
 
-const days = ["M", "T", "W", "Th", "F", "Sa", "Su"];
 
 export default function App() {
-  const[selectedDay, setSelectedDay] = useState('M') 
-
+  const[selectedDay, setSelectedDay] = useState('M')
+  const[allTomatoes, setAllTomatoes] = useState({})
+  const days = ["M", "T", "W", "Th", "F", "Sa", "Su"];
+  console.log(allTomatoes[selectedDay])
   return (
     <div className="App">
       <div className="window">
+
+
         <h2>Tomato Counter</h2>
         {days.map((day) => (
-          <div key={day} className="tomato-box">
-            <h3>{day}</h3>
-            <div className="tomato-day-box"></div>
-          </div>
-        ))}
+            <div 
+            key={day} 
+            className="tomato-box" 
+            onClick={() => setSelectedDay(day)}
+            style={selectedDay === day ? {color: 'blue'}: {}}>
+                <h3>{day}</h3>
+                <div 
+                    className="tomato-day-box"
+                    style={selectedDay === day ? {borderColor: 'blue'}: {}}>
+                    {allTomatoes[day]}       
+                </div>
+            </div>
+          ))}
         <div className="buttons-container">
-          <div className="button">-</div>
-          <div className="button">+</div>
+          <Button 
+            onClick={() => {
+              setAllTomatoes({
+                ...allTomatoes, 
+                [selectedDay]: `${allTomatoes[selectedDay]-1}`})}}
+                
+            buttonType={'-'}
+          />
+          <Button 
+            onClick={() => {
+              setAllTomatoes({
+                ...allTomatoes, 
+                [selectedDay]: 
+                `${allTomatoes[selectedDay] ? allTomatoes[selectedDay] : '' }🍅`})}}
+            buttonType={'+'}
+          />
         </div>
+        
       </div>
     </div>
   );
