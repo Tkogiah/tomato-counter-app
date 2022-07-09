@@ -15,7 +15,26 @@ export default function App() {
   const[selectedDay, setSelectedDay] = useState('M')
   const[allTomatoes, setAllTomatoes] = useState({})
   const days = ["M", "T", "W", "Th", "F", "Sa", "Su"];
-  console.log(allTomatoes[selectedDay])
+  
+  function addTomato() {
+    const newAllTomatoes = {...allTomatoes}
+    if(newAllTomatoes[selectedDay]) {
+      newAllTomatoes[selectedDay] = newAllTomatoes[selectedDay] + '🍅'
+    }
+    else {
+      newAllTomatoes[selectedDay] = '🍅'
+    }
+    setAllTomatoes(newAllTomatoes)
+  }
+
+  function subtractTomato() {
+    const newAllTomatoes = {...allTomatoes}
+    if(newAllTomatoes[selectedDay]) {
+      newAllTomatoes[selectedDay] = newAllTomatoes[selectedDay].slice(0, -2)
+    }
+    setAllTomatoes(newAllTomatoes)
+  }
+ 
   return (
     <div className="App">
       <div className="window">
@@ -38,19 +57,11 @@ export default function App() {
           ))}
         <div className="buttons-container">
           <Button 
-            onClick={() => {
-              setAllTomatoes({
-                ...allTomatoes, 
-                [selectedDay]: `${allTomatoes[selectedDay]-1}`})}}
-                
+            onClick={subtractTomato}
             buttonType={'-'}
           />
           <Button 
-            onClick={() => {
-              setAllTomatoes({
-                ...allTomatoes, 
-                [selectedDay]: 
-                `${allTomatoes[selectedDay] ? allTomatoes[selectedDay] : '' }🍅`})}}
+            onClick={addTomato}
             buttonType={'+'}
           />
         </div>
