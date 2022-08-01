@@ -70,3 +70,5 @@ export default function App() {
     </div>
   );
 }
+
+// const domContainer = document.querySelector('#tomatocounter');const root = ReactDOM.createRoot(domContainer);root.render(e(LikeButton));
