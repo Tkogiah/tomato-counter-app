@@ -1,6 +1,5 @@
 import "./App.css";
 import { useState } from "react";
-import Tomato from "./Tomato";
 import Button from "./Button";
 
 /*
